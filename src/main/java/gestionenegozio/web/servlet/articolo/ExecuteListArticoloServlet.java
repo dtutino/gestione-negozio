@@ -23,7 +23,7 @@ public class ExecuteListArticoloServlet extends HttpServlet {
 				request.setAttribute("successMessage", "Operazione effettuata con successo");
 			
 			request.setAttribute("articoli_list_attribute",
-					MyServiceFactory.getArticoloServiceInstance().listAllElements());
+					MyServiceFactory.getArticoloServiceInstance().listAllElementsEager());
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("errorMessage", "Attenzione si è verificato un errore.");

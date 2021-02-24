@@ -20,6 +20,16 @@ public class PrepareInsertArticoloServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
+			request.setAttribute("categorie_list_attribute",
+					MyServiceFactory.getCategoriaServiceInstance().listAllElements());
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("errorMessage", "Attenzione si è verificato un errore.");
+			request.getRequestDispatcher("home").forward(request, response);
+			return;
+		}
+
 		request.getRequestDispatcher("/articolo/insert.jsp").forward(request, response);
 	}
 

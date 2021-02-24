@@ -26,6 +26,12 @@ public class ArticoloDAOImpl implements ArticoloDAO {
 	public List<Articolo> list() throws Exception {
 		return entityManager.createQuery("from Articolo", Articolo.class).getResultList();
 	}
+	
+	@Override
+	public List<Articolo> listAllEager() throws Exception {
+		return entityManager.createQuery("from Articolo a join fetch a.categorie", Articolo.class)
+				.getResultList();
+	}
 
 	@Override
 	public Optional<Articolo> findOne(Long id) throws Exception {

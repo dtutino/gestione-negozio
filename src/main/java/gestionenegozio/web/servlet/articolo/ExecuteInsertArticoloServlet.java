@@ -27,6 +27,9 @@ public class ExecuteInsertArticoloServlet extends HttpServlet {
 		String nomeParam = request.getParameter("nome");
 		String prezzoParam = request.getParameter("prezzo");
 		String dataInserimentoParam = request.getParameter("dataInserimento");
+		String categoriaParam = request.getParameter("categoria");
+		
+		Long categoriaIdParsed = UtilityParse.parseIdArrivoFromString(categoriaParam);
 
 		Date dataInserimentoParsed = UtilityParse.parseDateArrivoFromString(dataInserimentoParam);
 		
@@ -41,6 +44,7 @@ public class ExecuteInsertArticoloServlet extends HttpServlet {
 		Articolo articoloInstance = new Articolo(nomeParam, prezzoParsed, dataInserimentoParsed);
 		
 		try {
+			MyServiceFactory.getArticoloServiceInstance().aggiungiCategoria(articoloInstance, MyServiceFactory.getCategoriaServiceInstance().caricaSingoloElemento(categoriaIdParsed));
 			MyServiceFactory.getArticoloServiceInstance().inserisciNuovo(articoloInstance);
 		} catch (Exception e) {
 			e.printStackTrace();
