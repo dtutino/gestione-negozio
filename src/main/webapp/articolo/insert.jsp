@@ -47,6 +47,15 @@
                         		<input class="form-control" id="dataInserimento" type="date" placeholder="dd/MM/yy"
                             		title="formato : gg/mm/aaaa"  name="dataInserimento" >
 							</div>
+							<div class="form-group col-md-6">
+								<label for="categoria">Categoria</label>
+							    <select class="form-control" id="categoria" name="categoria">
+							    	<option value=""> -- Selezionare una voce -- </option>
+							      	<c:forEach items="${categorie_list_attribute }" var="categoriaItem">
+							      		<option value="${categoriaItem.id}">${categoriaItem.descrizione } </option>
+							      	</c:forEach>
+							    </select>
+							</div>
 						</div>
 							
 						<button type="submit" name="submit" value="submit" id="submit" class="btn btn-primary">Conferma</button>

@@ -49,6 +49,7 @@
 		                        <th>Nome</th>
 		                        <th>Prezzo</th>
 		                        <th>Data Inserimento</th>
+		                        <th>Categoria</th>
 		                        <th>Stato</th>
 		                        <th>Azioni</th>
 		                    </tr>
@@ -59,6 +60,11 @@
 									<td>${articoloItem.nome }</td>
 									<td>${articoloItem.prezzo }</td>
 									<td><fmt:formatDate type = "date" value = "${artioloItem.dataInserimento }" /></td>
+									<td>
+										<c:forEach items="${articoloItem.categorie }" var="categoriaItem">
+											${categoriaItem.descrizione }
+										</c:forEach>
+									</td>
 									<td>${articoloItem.stato }</td>
 									<td>
 										<a class="btn  btn-sm btn-outline-secondary" href="ExecuteVisualizzaArticoloServlet?idArticolo=${articoloItem.id }">Visualizza</a>
